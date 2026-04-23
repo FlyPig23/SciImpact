@@ -1,0 +1,16 @@
+status	source_pattern	suggested_target	reason
+include_now	MAPLE_sampled/*/papers.json	original_data/by_field/<field>/maple_sampled/	Field-organized source paper corpus
+include_now	construct_citations_dataset/sampled_all_field_pairs_433/*_{train,val,test}_pairs.jsonl	original_data/by_field/<field>/citation/	Compact citation pairs used by the citation task
+include_now	sciscinet/combined_pair_sampled/*_{train,val,test}_pairs.json	original_data/by_field/<field>/media/	Per-field media-impact pairs
+include_now	sciscinet/patents_pair_sampled/*_{train,val,test}_pairs.json	original_data/by_field/<field>/patent/	Per-field patent-impact pairs
+include_now	best_paper/split_dataset/*_new.json	original_data/awards/cs_best_paper/	Released best-paper splits
+include_now	MDPI_best_paper/mdpi_awards_enriched_with_source.json;MDPI_best_paper/mdpi_{train,val,test}_new.json	original_data/awards/mdpi_best_paper/	Useful MDPI source/eval files without the huge negative pool
+include_now	nobel/sampled_nobel_pairs/*_new.json	original_data/awards/nobel/	Nobel sampled pair files tracked through LFS
+include_now	github_data/github_pairs_by_repo/*.json;github_data/readme_data.json	original_data/non_field/github/	GitHub benchmark pairs plus README text store
+include_now	huggingface_dataset/datasetcard_pairs/*.jsonl	original_data/non_field/huggingface_dataset_pairs/	Pair files already contain card text
+include_now	huggingface_model/modelcard_pairs_limit_2/*.jsonl	original_data/non_field/huggingface_model_pairs_limit_2/	Pair files already contain card text
+optional	sampled_maple_openalex_matches/*	original_data/by_field/<field>/openalex_match/	Useful provenance mapping, but not required by the released scripts
+exclude_default	openalex-snapshot/*	keep on Hugging Face	External snapshot dump, not a good fit for the code repo
+exclude_default	MDPI_best_paper/mdpi_negatives_enriched_with_source.json	keep on Hugging Face	Extremely large intermediate artifact
+exclude_default	logs/*;meh/*	keep on Hugging Face	Intermediate/debug material
+exclude_default	huggingface_dataset/Dataset_Card/*	keep on Hugging Face	Duplicative raw card corpus; pair files already embed card text
